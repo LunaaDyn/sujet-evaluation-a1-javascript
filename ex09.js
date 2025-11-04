@@ -69,6 +69,42 @@ function encodeRot16(password) {
 	return pass.join("");
 }
 
+function customEncodePassword(password, offset) {
+	let pass = [];
+	for (let i = 0; i < password.length; i++) {
+		for (let j = 0; j < alphabet.length; j++) {
+			if (password[i] == alphabet[j]) {
+				let k = 0;
+				if (offset > 25) {
+					for (let n; n < 25; n -= 26) {}
+				} else if (offset < 0) {
+					for (let n; n > 0; n += 26) {}
+				}
+				let offset1 = 26 - offset;
+				let offset2 = 52 - offset;
+				if (j < offset1) {
+					k = j + offset;
+				} else if (j >= offset1 && j < 26) {
+					k = j - offset1;
+				} else if (j >= 26 && j < offset2) {
+					k = j + offset;
+				} else if (j >= offset2 && j < 52) {
+					k = j - offset1;
+				}
+				pass.push(alphabet[k]);
+			}
+		}
+		for (let l = 0; l < signs.length; l++) {
+			let m = 0;
+			if (password[i] == signs[l]) {
+				m = l;
+				pass.push(signs[m]);
+			}
+		}
+	}
+	return pass.join("");
+}
+
 console.log(encodePassword("What ?", encodeRot8));
 console.log(encodePassword("abc", encodeRot8)); // Résultat attendu: "ijk";
 console.log(encodePassword("abc", encodeRot16)); // Résultat attendu: "qrs";
@@ -76,3 +112,5 @@ console.log(encodePassword("xyz", encodeRot8)); // Résultat attendu: "fgh";
 console.log(encodePassword("xyz", encodeRot16)); // Résultat attendu: "nop";
 console.log(encodePassword("Bonjour, je m'appelle Teuse.", encodeRot8));
 console.log(encodePassword("Bonjour, je m'appelle Teuse.", encodeRot16));
+console.log(customEncodePassword("Bonjour, je m'appelle Teuse.", -8));
+console.log(customEncodePassword("Bonjour, je m'appelle Teuse.", 8));
