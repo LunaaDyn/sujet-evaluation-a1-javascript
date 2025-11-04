@@ -76,9 +76,13 @@ function customEncodePassword(password, offset) {
 			if (password[i] == alphabet[j]) {
 				let k = 0;
 				if (offset > 25) {
-					for (let n; n < 25; n -= 26) {}
+					for (let n; n < 26; n -= 26) {
+						offset = n;
+					}
 				} else if (offset < 0) {
-					for (let n; n > 0; n += 26) {}
+					for (let n; n > -1; n += 26) {
+						offset = n;
+					}
 				}
 				let offset1 = 26 - offset;
 				let offset2 = 52 - offset;
