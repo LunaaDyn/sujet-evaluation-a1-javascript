@@ -25,13 +25,6 @@ function encodeRot8(password) {
 					k = j + 8;
 				} else if (j >= 44 && j < 52) {
 					k = j - 18;
-				} else {
-					for (let l = 0; l < signs.length; l++) {
-						if (password[i] == signs[l]) {
-							k = l;
-						}
-						pass.push(signs[k]);
-					}
 				}
 				pass.push(alphabet[k]);
 			}
@@ -53,21 +46,14 @@ function encodeRot16(password) {
 		for (let j = 0; j < alphabet.length; j++) {
 			if (password[i] == alphabet[j]) {
 				let k = 0;
-				if (j < 9) {
+				if (j < 10) {
 					k = j + 16;
-				} else if (j >= 9 && j < 26) {
+				} else if (j >= 10 && j < 26) {
 					k = j - 10;
-				} else if (j >= 26 && j < 35) {
+				} else if (j >= 26 && j < 36) {
 					k = j + 16;
-				} else if (j >= 35 && j < 52) {
+				} else if (j >= 36 && j < 52) {
 					k = j - 10;
-				} else {
-					for (let l = 0; l < signs.length; l++) {
-						if (password[i] == signs[l]) {
-							k = l;
-						}
-						pass.push(signs[k]);
-					}
 				}
 				pass.push(alphabet[k]);
 			}
