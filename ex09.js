@@ -1,7 +1,7 @@
 //ex09.js
 
 let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let signs = " ?!,:;/.";
+let signs = " ?!,:;/.&'()[]{}$€%";
 
 function encodePassword(password, encodeFunction) {
 	if (encodeFunction == encodeRot8) {
